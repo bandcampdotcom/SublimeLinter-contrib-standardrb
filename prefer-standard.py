@@ -10,9 +10,9 @@ class StandardRBPreferStandardListener(sublime_plugin.EventListener):
         self.rubocop_installed = 'SublimeLinter-rubocop' in sys.modules
 
         plugin_settings = sublime.load_settings('SublimeLinter.sublime-settings')
-        linter_settings = plugin_settings.get('linters')
-        rubocop_settings = linter_settings.get('rubocop')
-        standardrb_settings = linter_settings.get('standardrb')
+        linter_settings = plugin_settings.get('linters', {})
+        rubocop_settings = linter_settings.get('rubocop', {})
+        standardrb_settings = linter_settings.get('standardrb', {})
 
         self.rubocop_disabled = rubocop_settings.get('disable')
         self.standard_disabled = standardrb_settings.get('disable')
