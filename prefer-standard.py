@@ -75,7 +75,12 @@ class StandardRBPreferStandardListener(sublime_plugin.EventListener):
             return None
 
     def get_closest_config_file_path(self):
-        project_folders = self.view.window().folders()
+        window = self.view.window()
+
+        if not window:
+            return None
+
+        project_folders = window.folders()
 
         if not project_folders:
             return None
